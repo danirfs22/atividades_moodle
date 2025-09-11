@@ -103,4 +103,3 @@ def multiplicacao(a, b):
 
 def aplicar_operacao(a, b, operacao):
     return operacao(a, b)
-print(aplicar_operacao(5, 3, soma)) 
