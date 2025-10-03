@@ -18,7 +18,7 @@ print(ordenados)
 
 5 - Dada a lista ["ana", "pedro", "maria"], use map e lambda para transformar em ["Ana", "Pedro", "Maria"].
 lista = ["ana", "pedro", "maria"]
-print(list(map(lambda x:x.capitalize(), lista)
+print(list(map(lambda x: x.capitalize(), lista)))
 
 6 - Usando reduce, calcule o produto (multiplicação) de todos os elementos da lista [2, 3, 4, 5].
 from functools import reduce
