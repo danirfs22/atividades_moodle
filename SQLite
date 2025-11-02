@@ -1,0 +1,66 @@
+1- Importe o módulo sqlite3 e faça a conexão com o banco de dados escola_v2.db
+
+import sqlite3
+
+db_connection = sqlite3.connect('escola_v2.db')
+
+2 - Faça a query para pegar toda a tabela alunos e imprima na tela.
+
+cursor = db_connection.cursor()
+
+cursor.execute("""
+SELECT * FROM Aluno
+""")
+
+rows = cursor.fetchall()
+
+for row in rows:
+    print(row)
+
+db_connection.close()
+
+3 - Obtenha a media entre nota1 e nota2 dos alunos, ordene em ordem decrescente e retorne apenas os 10 maiores notas. No fim imprima na tela a lista desses alunos e suas médias
+
+cursor = db_connection.cursor()
+cursor.execute("""
+SELECT nome, (nota1 + nota2)/2 AS media_notas FROM Aluno
+ORDER BY media_notas DESC
+LIMIT 10
+""")
+rows = cursor.fetchall()
+
+for row in rows:
+    print(row)
+
+db_connection.close()
+
+4 - Use Left Join com as tabelas Aluno e Turma e imprima todos os dados da tabela.
+
+cursor = db_connection.cursor()
+cursor.execute("""
+SELECT * FROM Aluno LEFT JOIN Turma 
+WHERE Aluno.id_turma == Turma.id   
+""")
+
+rows = cursor.fetchall()
+
+for row in rows:
+    print(row)
+
+db_connection.close()
+
+5 - Usando a query da questão 4, adicione um filtro para pegar apenas os alunos da turma 2 e imprima na tela.
+
+cursor = db_connection.cursor()
+cursor.execute("""
+SELECT * FROM Aluno LEFT JOIN Turma 
+WHERE Aluno.id_turma = Turma.id
+AND Turma.id = 2   
+""")
+
+rows = cursor.fetchall()
+
+for row in rows:
+    print(row)
+
+db_connection.close()
